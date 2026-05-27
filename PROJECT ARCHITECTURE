@@ -1,0 +1,31 @@
+ex-experience-os/
+│
+├── apps/
+│   ├── web/
+│   ├── api/
+│   └── dashboard/
+│
+├── packages/
+│   ├── ui/
+│   ├── cinematic-engine/
+│   ├── ai-core/
+│   ├── telemetry/
+│   ├── security/
+│   └── design-system/
+│
+├── infrastructure/
+│   ├── docker/
+│   ├── kubernetes/
+│   ├── monitoring/
+│   └── terraform/
+│
+├── ai/
+│   ├── agents/
+│   ├── memory/
+│   ├── orchestration/
+│   └── embeddings/
+│
+├── .github/
+├── package.json
+├── turbo.json
+└── pnpm-workspace.yaml
