@@ -1,0 +1,34 @@
+# dependencies
+node_modules
+
+# next
+.next
+out
+
+# production
+dist
+build
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env
+.env
+.env.local
+.env.production
+
+# turbo
+.turbo
+
+# vscode
+.vscode
+
+# os
+.DS_Store
+Thumbs.db
+
+# typescript
+*.tsbuildinfo

@@ -1,13 +1,13 @@
-import { NeuralNavbar } from '@/components/navigation/neural-navbar';
-import { HeroRuntime } from '@/components/hero/hero-runtime';
-import { OracleSection } from '@/components/oracle/oracle-section';
+import NeuralNavbar from "../components/navigation/neural-navbar";
+import CinematicHero from "../components/hero/cinematic-hero";
+import ManifestoSection from "../components/sections/manifesto-section";
 
-export default function HomePage() {
+export default function Page() {
   return (
     <main>
       <NeuralNavbar />
-      <HeroRuntime />
-      <OracleSection />
+      <CinematicHero />
+      <ManifestoSection />
     </main>
   );
 }

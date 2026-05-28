@@ -1,0 +1,19 @@
+{
+  "name": "ex-experience-os",
+  "private": true,
+
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+
+  "scripts": {
+    "dev": "npm run dev --workspace=@ex/web",
+    "build": "npm run build --workspace=@ex/web",
+    "start": "npm run start --workspace=@ex/web"
+  },
+
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  }
+}
