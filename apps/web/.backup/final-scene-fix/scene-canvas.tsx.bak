@@ -1,0 +1,45 @@
+﻿"use client"
+
+import { Canvas } from "@react-three/fiber"
+import { PerspectiveCamera, Float, Environment } from "@react-three/drei"
+import { EffectComposer, Bloom } from "@react-three/postprocessing"
+import { Suspense } from "react"
+import { NeuralCore } from "./systems/neural-core"
+import { Atmosphere } from "./systems/atmosphere"
+
+export function SceneCanvas() {
+  return (
+    <div className="fixed inset-0 -z-10 bg-[#050505]">
+      <Canvas
+        dpr={[1, 2]}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+        }}
+        camera={{ position: [0, 0, 8], fov: 45 }}
+      >
+        <Suspense fallback={null}>
+          <PerspectiveCamera makeDefault position={[0, 0, 8]} />
+          
+          <color attach="background" args={["#050505"]} />
+          <fog attach="fog" args={["#050505", 6, 18]} />
+          
+          <ambientLight intensity={0.3} />
+          <directionalLight position={[3, 4, 5]} intensity={1.2} />
+
+          <Float speed={2} rotationIntensity={0.4} floatIntensity={0.8}>
+            <NeuralCore />
+          </Float>
+
+          <Atmosphere />
+          <Environment preset="night" />
+
+          <EffectComposer disableNormalPass>
+            <Bloom intensity={1.1} luminanceThreshold={0.2} mipmapBlur />
+          </EffectComposer>
+        </Suspense>
+      </Canvas>
+    </div>
+  )
+}

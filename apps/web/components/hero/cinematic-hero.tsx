@@ -1,38 +1,30 @@
-"use client"
+﻿"use client"
 
-import SceneCanvas from "../scene/scene-canvas"
+import { useEffect, useState } from "react"
+import SafeScene from "@/components/scene/safe-scene"
 
 export default function CinematicHero() {
-  return (
-    <main
-      style={{
-        width: "100vw",
-        height: "100vh",
-        position: "relative",
-      }}
-    >
-      <SceneCanvas />
+  const [mounted, setMounted] = useState(false)
 
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          pointerEvents: "none",
-        }}
-      >
-        <h1
-          style={{
-            color: "white",
-            fontSize: "5rem",
-            fontFamily: "sans-serif",
-            letterSpacing: "0.2em",
-          }}
-        >
-          EX EXPERIENCE OS
-        </h1>
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  return (
+    <main className="relative h-screen w-full overflow-hidden bg-black text-white">
+      <div className="absolute inset-0 bg-black" />
+
+      {mounted ? <SafeScene /> : null}
+
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-6xl md:text-8xl font-black tracking-tight">
+            EX EXPERIENCE OS
+          </h1>
+          <p className="mt-6 text-white/60 text-base md:text-xl tracking-[0.35em] uppercase">
+            Cinematic Intelligence Runtime
+          </p>
+        </div>
       </div>
     </main>
   )

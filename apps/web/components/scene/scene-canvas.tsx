@@ -1,37 +1,38 @@
-"use client"
+﻿"use client"
 
 import { Canvas } from "@react-three/fiber"
-import { Float, OrbitControls } from "@react-three/drei"
-
-function Orb() {
-return ( <Float speed={2} rotationIntensity={2} floatIntensity={3}> <mesh>
-<icosahedronGeometry args={[1.5, 1]} /> <meshStandardMaterial
-       color="#ffffff"
-       emissive="#ffffff"
-       emissiveIntensity={2}
-       roughness={0}
-     /> </mesh> </Float>
-)
-}
+import { Float, OrbitControls, Environment } from "@react-three/drei"
+import { Suspense } from "react"
+import { NeuralCore } from "./systems/neural-core"
+import { Atmosphere } from "./systems/atmosphere"
 
 export default function SceneCanvas() {
-return (
-<Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-<color attach="background" args={["#050505"]} />
+  return (
+    <div className="fixed inset-0 -z-10 bg-[#050505]">
+      <Canvas
+        dpr={[1, 1.5]}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+        }}
+        camera={{ position: [0, 0, 6], fov: 45 }}
+      >
+        <Suspense fallback={null}>
+          <color attach="background" args={["#050505"]} />
+          <ambientLight intensity={1.2} />
+          <directionalLight position={[3, 3, 3]} intensity={2.5} />
 
-```
-  <ambientLight intensity={1.5} />
-  <directionalLight position={[3, 3, 3]} intensity={4} />
+          <Float speed={2} rotationIntensity={1.2} floatIntensity={1.5}>
+            <NeuralCore />
+          </Float>
 
-  <Orb />
+          <Atmosphere />
+          <Environment preset="night" />
 
-  <OrbitControls
-    enableZoom={false}
-    autoRotate
-    autoRotateSpeed={1.5}
-  />
-</Canvas>
-```
-
-)
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.2} />
+        </Suspense>
+      </Canvas>
+    </div>
+  )
 }

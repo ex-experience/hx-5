@@ -1,0 +1,14 @@
+﻿"use client"
+
+export function NeuralCore() {
+return (
+<mesh rotation={[0.4, 0.2, 0]}>
+<icosahedronGeometry args={[1.5, 1]} /> <meshStandardMaterial
+     color="#ffffff"
+     emissive="#4488ff"
+     emissiveIntensity={2}
+     roughness={0.2}
+     metalness={1}
+   /> </mesh>
+)
+}
